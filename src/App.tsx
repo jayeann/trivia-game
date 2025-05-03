@@ -9,7 +9,7 @@ function App() {
           <img className="size-96" src={triviaLogo} alt="Vite logo" />
         </a>
       </div>
-      <h1 className="uppercase text-9xl text-amber-300 font-black">
+      <h1 className="uppercase text-9xl text-white font-black double-shadow">
         Name that
       </h1>
 
