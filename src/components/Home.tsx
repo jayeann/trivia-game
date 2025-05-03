@@ -1,9 +1,9 @@
 import triviaLogo from "/trivia.svg";
 import playBtn from "../assets/play-button.svg";
-import musicBtn from "../assets/music-on-button.svg";
-import settingBtn from "../assets/setting-button.svg";
+import { useGameStore } from "../store/gameStore";
 
 const Home = () => {
+  const setPhase = useGameStore((state) => state.setPhase);
   return (
     <>
       <div className="flex items-center justify-center">
@@ -15,14 +15,11 @@ const Home = () => {
         Name that
       </h1>
 
-      <button className="fixed bottom-50 left-1/2 transform -translate-x-1/2 transition duration-300 hover:scale-120 active:scale-95 rounded-full ">
+      <button
+        onClick={() => setPhase("CATEGORY")}
+        className="fixed bottom-50 left-1/2 transform -translate-x-1/2 transition duration-300 hover:scale-120 active:scale-95 rounded-full "
+      >
         <img className="size-40" src={playBtn} alt="play button" />
-      </button>
-      <button className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
-        <img className="size-24" src={settingBtn} alt="settings button" />
-      </button>
-      <button className="fixed right-10 bottom-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
-        <img className="size-24" src={musicBtn} alt="music on button" />
       </button>
     </>
   );

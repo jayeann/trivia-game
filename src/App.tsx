@@ -4,22 +4,34 @@ import Home from "./components/Home";
 import CategorySelector from "./components/CategorySelector";
 import GameScreen from "./components/GameScreen";
 import ResultScreen from "./components/ResultScreen";
+import Footer from "./components/Footer";
 
 function App() {
   const phase = useGameStore((state) => state.phase);
-
+  let content;
   switch (phase) {
     case "HOME":
-      return <Home />;
+      content = <Home />;
+      break;
     case "CATEGORY":
-      return <CategorySelector />;
+      content = <CategorySelector />;
+      break;
     case "ROUND":
-      return <GameScreen />;
+      content = <GameScreen />;
+      break;
     case "RESULTS":
-      return <ResultScreen />;
+      content = <ResultScreen />;
+      break;
     default:
-      return null;
+      content = null;
   }
+
+  return (
+    <>
+      {content}
+      <Footer />
+    </>
+  );
 }
 
 export default App;
