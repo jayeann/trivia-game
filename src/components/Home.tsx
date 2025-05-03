@@ -3,7 +3,7 @@ import playBtn from "../assets/play-button.svg";
 import musicBtn from "../assets/music-on-button.svg";
 import settingBtn from "../assets/setting-button.svg";
 
-function Home() {
+const Home = () => {
   return (
     <>
       <div className="flex items-center justify-center">
@@ -26,6 +26,6 @@ function Home() {
       </button>
     </>
   );
-}
+};
 
 export default Home;

@@ -14,6 +14,7 @@ type GameState = {
   currentQuestionIndex: number;
   score: number;
   phase: GamePhase;
+  loading: boolean;
 
   setPhase: (phase: GamePhase) => void;
 };
@@ -26,6 +27,7 @@ export const useGameStore = create<GameState>((set) => ({
   score: 0,
   currentRound: 1,
   questionsPerRound: 0,
+  loading: false,
 
   setPhase: (phase) => set({ phase }),
 }));
