@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
 
 :root{
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Bagel Fat One", system-ui;
   background: radial-gradient(circle, #007EA4, #02546E);
 }
 
@@ -10,8 +10,4 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-}
-
-h1{
-  font-family: "Bagel Fat One", system-ui;
 }
