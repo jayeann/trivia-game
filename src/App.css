@@ -16,3 +16,7 @@
 .double-shadow{
   text-shadow: 5px 10px #FD8843, 10px 20px #004357;
 }
+
+.mini-double-shadow{
+  text-shadow: 2px 5px #FD8843, 5px 15px #004357;
+}
