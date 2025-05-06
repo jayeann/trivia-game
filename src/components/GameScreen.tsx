@@ -8,18 +8,46 @@ import nextBtn from "../assets/next-button.svg";
 
 const GameScreen = () => {
   const { data: rounds, isLoading, error } = useRounds();
+
   const currentRound = useGameStore((state) => state.currentRound);
   const currentQuestionIndex = useGameStore(
     (state) => state.currentQuestionIndex
   );
 
+  const setPhase = useGameStore((state) => state.setPhase);
+
+  const setCurrentQuestionIndex = useGameStore(
+    (state) => state.setCurrentQuestionIndex
+  );
+
+  const incrementQuestionIndex = useGameStore(
+    (state) => state.incrementQuestionIndex
+  );
+
+  const incrementRound = useGameStore((state) => state.incrementRound);
+
+  //show the specific ui based on state
   if (isLoading) return <p>Loading rounds...</p>;
   if (!rounds || rounds.length === 0) return <div>No rounds available</div>;
   if (error) return <p>Error loading rounds: {String(error)}</p>;
 
-  const roundContent = rounds[currentRound];
+  const roundContent = rounds[currentRound - 1];
   const currentQuestion = roundContent.questions[currentQuestionIndex];
-  const isMediaAudio = currentQuestion.mediaType === "audio";
+  const isMediaAudio = currentQuestion?.mediaType === "audio" ? true : false;
+  const isImage = currentQuestion?.mediaType === "image";
+  const isLastQuestion =
+    currentQuestionIndex === roundContent.questions.length - 1;
+  const isLastRound = currentRound === rounds.length;
+  const handleNext = () => {
+    if (!isLastQuestion) {
+      incrementQuestionIndex();
+    } else if (!isLastRound) {
+      incrementRound();
+      setCurrentQuestionIndex(0); // reset for next round
+    } else {
+      setPhase("RESULTS");
+    }
+  };
 
   return (
     <div className="h-screen">
@@ -27,7 +55,10 @@ const GameScreen = () => {
         <button className="fixed left-10 top-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
           <img className="size-24" src={backBtn} alt="settings button" />
         </button>
-        <button className="fixed right-10 top-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
+        <button
+          className="fixed right-10 top-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full "
+          onClick={handleNext}
+        >
           <img className="size-24" src={nextBtn} alt="music on button" />
         </button>
       </>
@@ -36,11 +67,21 @@ const GameScreen = () => {
           Round {roundContent.roundNumber}
         </h1>
         <h2 className="uppercase text-5xl xl:text-6xl text-white font-black mini-double-shadow">
-          {roundContent.title}
+          {roundContent.title} {currentQuestionIndex + 1}/
+          {roundContent.questions.length}
         </h2>
       </div>
 
-      <MediaControls isAudio={isMediaAudio} url={currentQuestion.url} />
+      {isImage ? (
+        <img
+          className="w-full h-1/3"
+          src={currentQuestion?.url}
+          alt={currentQuestion?.answer}
+        />
+      ) : (
+        <MediaControls isAudio={isMediaAudio} url={currentQuestion?.url} />
+      )}
+
       <div className="flex justify-center p-8">
         <input
           type="text"

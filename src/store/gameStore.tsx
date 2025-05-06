@@ -1,11 +1,5 @@
 import { create } from "zustand";
-
-type Question = {
-  text: string;
-  mediaType: "audio" | "video" | "image" | string;
-  url?: string;
-  hint?: string;
-};
+import { Question } from "../types/roundTypes";
 
 type GamePhase = "HOME" | "CATEGORY" | "ROUND" | "RESULTS";
 
