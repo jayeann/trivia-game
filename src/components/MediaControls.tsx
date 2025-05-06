@@ -53,8 +53,15 @@ function MediaControls({ isAudio, url }: MediaProps) {
       </>
     );
   }
+
   return (
-    <Video playing={isPlaying} onEnded={() => setIsPlaying(false)} url={url} />
+    <div className="max-w-lg aspect-video h-1/2 flex items-center justify-center">
+      <Video
+        playing={isPlaying}
+        onEnded={() => setIsPlaying(false)}
+        url={url}
+      />
+    </div>
   );
 }
 
