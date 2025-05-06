@@ -1,57 +1,41 @@
 
-# trivia-game
+> 🚧 **Work in progress** 
+
+## 🎵🎬 TriviaGuess – A Simple Media Guessing Game
+
+A fun and lightweight guessing game where players try to guess the **song**, **TV show**, or **movie** based on a short clue or hint.
+
+This project was built as a personal experiment to explore and play with modern frontend tools like **Vite**, **Tailwind CSS**, **Zustand**, **TanStack Query**, and **Firebase**. It’s a casual app with no pressure—just practicing clean code and fun features.
+
+### Features
+
+- Guess the correct media title (song/show/movie)
+- Fast, optimized build using Vite
+- Responsive UI with Tailwind CSS
+- State management with Zustand
+- Async data fetching and caching with TanStack Query
+- Firebase integration for data storage
+
+### Tech Stack
+
+- **Framework**: Vite (React)
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Data Layer**: TanStack Query
+- **Backend**: Firebase (Firestore)
+
+### Purpose
+
+This project was built mainly for fun—to explore modern frontend tools and build something interactive. No production pressure, just code and creativity!
+
+### Getting Started
+
+```bash
+git clone https://github.com/jayeann/trivia-game.git
+cd trivia-game
+npm install
+npm run dev
+
+
 ============================
 # React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
