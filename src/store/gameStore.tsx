@@ -25,7 +25,7 @@ export const useGameStore = create<GameState>((set) => ({
   questions: [],
   currentQuestionIndex: 0,
   score: 0,
-  currentRound: 1,
+  currentRound: 0,
   questionsPerRound: 0,
   loading: false,
 
