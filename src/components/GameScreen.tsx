@@ -1,7 +1,6 @@
 import "../styles/music_player.css";
-import playBtn from "../assets/play-button.svg";
-import pauseBtn from "../assets/pause-button.svg";
 import SendIcon from "../assets/SendIcons";
+import MediaControls from "./MediaControls";
 
 const GameScreen = () => {
   return (
@@ -14,31 +13,11 @@ const GameScreen = () => {
           Name that song
         </h2>
       </div>
-      <div className="h-1/2 flex items-center justify-center">
-        <div className="flex p-8 w-full min-h-1/2 space-x-10 bg-[#004357] rounded-2xl">
-          <div className="flex-1 rounded-2xl bg-white flex justify-center items-center">
-            <button className="w-20 h-20 flex items-center justify-center transform transition hover:scale-120 ">
-              <img src={playBtn} alt="play button" />
-            </button>
-            <button className="w-20 h-20 flex items-center justify-center transform transition hover:scale-120 ">
-              <img src={pauseBtn} alt="pause button" />
-            </button>
-          </div>
-          <div className="flex-1 rounded-2xl flex justify-center">
-            <div className="music-player">
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Input moved to a new line below */}
+      <MediaControls
+        isAudio={false}
+        url="https://raw.githubusercontent.com/jayeann/media-player-test/refs/heads/main/movie/movie-1.MOV"
+      />
       <div className="flex justify-center p-8">
         <input
           type="text"
