@@ -11,7 +11,7 @@ interface MediaPlayerProps {
 const BaseMediaPlayer = ({
   url,
   playing = true,
-  height = "400px",
+  height = "300px",
   width = "100%",
   onEnded,
 }: MediaPlayerProps) => (
