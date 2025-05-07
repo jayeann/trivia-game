@@ -7,11 +7,24 @@ import CategorySelector from "./components/CategorySelector";
 import GameScreen from "./components/GameScreen";
 import ResultScreen from "./components/ResultScreen";
 import { Audio } from "./components/MediaPlayer";
+import { clearAllLocalStorage } from "./utils/localStorage";
 
 function App() {
   const phase = useGameStore((state) => state.phase);
   const setIsBgPlaying = useMediaStore((state) => state.setIsBgPlaying);
   const isBgPlaying = useMediaStore((state) => state.isBgPlaying);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      clearAllLocalStorage();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     // Ensure background music plays on mount
