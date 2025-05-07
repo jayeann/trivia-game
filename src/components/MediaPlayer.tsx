@@ -5,6 +5,8 @@ interface MediaPlayerProps {
   playing?: boolean;
   height?: string;
   width?: string;
+  loop?: boolean;
+  volume?: number;
   onEnded: () => void;
 }
 
@@ -13,9 +15,13 @@ const BaseMediaPlayer = ({
   playing = true,
   height = "300px",
   width = "100%",
+  loop = false,
+  volume = 1.0,
   onEnded,
 }: MediaPlayerProps) => (
   <ReactPlayer
+    volume={volume}
+    loop={loop}
     url={url}
     playing={playing}
     controls
