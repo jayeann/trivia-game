@@ -1,4 +1,19 @@
-/* From Uiverse.io by G4b413l */ 
+
+.logo-animate{
+    animation: peek 1s both infinite;
+    animation-delay: var(--d);
+  }
+  
+  @keyframes peek {
+    25% {
+      transform: rotateX(30deg) rotate(-13deg);
+    }
+    50% {
+      transform: translateY(-22px) rotate(3deg) scale(1.1);
+    }
+  }
+
+
 .three-body {
     --uib-size: 7rem;
     --uib-speed: 0.8s;
