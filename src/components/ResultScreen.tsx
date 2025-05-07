@@ -1,18 +1,10 @@
 import { useRounds } from "../hooks/useRounds";
 import { compareAnswers } from "../utils/compareAnswers";
 import { getAllLocalStorageAnswers } from "../utils/localStorage";
-
-type Question = {
-  answer: string;
-};
-
-type Round = {
-  roundNumber: number;
-  questions: Question[];
-};
+import { Round } from "../types/roundTypes";
 
 interface AnswerSummary {
-  round: number;
+  round: string;
   questionIndex: number;
   answer: string;
 }
@@ -26,7 +18,7 @@ function ResultScreen() {
     return data
       .map((round) =>
         round.questions.map((question, index) => ({
-          round: round.roundNumber,
+          round: round.roundNumber.toString(),
           questionIndex: index,
           answer: question.answer,
         }))

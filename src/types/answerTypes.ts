@@ -1,5 +1,5 @@
 export interface CorrectAnswer {
-  round: number;
+  round: string;
   questionIndex: number;
   answer: string;
 }
