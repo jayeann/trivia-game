@@ -12,7 +12,7 @@ type Round = {
 };
 
 interface AnswerSummary {
-  round: string;
+  round: number;
   questionIndex: number;
   answer: string;
 }
