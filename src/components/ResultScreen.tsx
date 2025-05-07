@@ -64,7 +64,8 @@ function ResultScreen() {
                     : "bg-[#004357] hover:border-2 hover:border-amber-300 text-white hover:text-amber-300 active:scale-105"
                 }`}
               >
-                {item ? item.answer : "Click to Reveal"}
+                {/* {item ? item.answer : "Click to Reveal"} */}
+                {item.isCorrect ? item.answer : item.correctAnswer}
               </div>
             ))}
           </div>

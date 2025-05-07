@@ -4,10 +4,20 @@ export const compareAnswers = (
   correctAnswers: CorrectAnswer[],
   guessAnswers: GuessAnswer[]
 ): {
-  [round: string]: { question: number; answer: string; isCorrect: boolean }[];
+  [round: string]: {
+    question: number;
+    answer: string;
+    isCorrect: boolean;
+    correctAnswer: string;
+  }[];
 } => {
   const resultsByRound: {
-    [round: string]: { question: number; answer: string; isCorrect: boolean }[];
+    [round: string]: {
+      question: number;
+      answer: string;
+      isCorrect: boolean;
+      correctAnswer: string;
+    }[];
   } = {};
 
   // Initialize results by round
@@ -19,6 +29,7 @@ export const compareAnswers = (
       question: correct.questionIndex,
       answer: "",
       isCorrect: false,
+      correctAnswer: correct.answer,
     });
   });
 
@@ -46,7 +57,7 @@ export const compareAnswers = (
           r.question === questionIndex
       );
       if (result) {
-        result.answer = guess.value;
+        result.answer = normalize(guess.value);
         result.isCorrect = isCorrect;
       }
     }
