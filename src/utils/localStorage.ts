@@ -14,3 +14,13 @@ export const clearLocalStorage = (key: string): void => {
 export const clearAllLocalStorage = (): void => {
   localStorage.clear();
 };
+
+export const getAllLocalStorageAnswers = (): {
+  key: string;
+  value: string;
+}[] => {
+  return Object.keys(localStorage).map((key) => {
+    const value = localStorage.getItem(key) || "";
+    return { key, value };
+  });
+};
