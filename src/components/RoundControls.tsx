@@ -34,6 +34,8 @@ function RoundControls({ inputValue, inputIdentifier }: RoundControlsProps) {
 
   const incrementRound = useGameStore((state) => state.incrementRound);
 
+  const setIsClueVisible = useGameStore((state) => state.setIsClueVisible);
+
   const handleNextBtn = () => {
     if (!inputValue.trim()) return;
     saveToLocalStorage(inputIdentifier, inputValue);
@@ -67,6 +69,7 @@ function RoundControls({ inputValue, inputIdentifier }: RoundControlsProps) {
         clearAllLocalStorage();
         setPhase("HOME");
       }
+      setIsClueVisible(false);
     }
   };
   return (
