@@ -30,12 +30,9 @@ const GameScreen = () => {
   const round = rounds?.[currentRound - 1];
   const question = round?.questions?.[currentQuestionIndex];
   if (round) {
-    inputIdentifier = `input-round-${round.roundNumber}-question-${
-      currentQuestionIndex + 1
-    }`;
+    inputIdentifier = `input-round-${round.roundNumber}-question-${currentQuestionIndex}`;
   }
 
-  // ✅ Always call useEffect
   useEffect(() => {
     if (!inputIdentifier) return;
     const savedAnswer = getFromLocalStorage<string>(inputIdentifier);
