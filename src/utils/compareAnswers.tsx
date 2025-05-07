@@ -29,8 +29,9 @@ export const compareAnswers = (
 
     const [, round, questionIndexStr] = match; // No need for "_"
     const questionIndex = Number(questionIndexStr);
+    const roundNumber = Number(round);
     const correct = correctAnswers.find(
-      (c) => c.round === round && c.questionIndex === questionIndex
+      (c) => c.round === roundNumber && c.questionIndex === questionIndex
     );
 
     const normalize = (str: string) =>
@@ -40,9 +41,10 @@ export const compareAnswers = (
       : false;
 
     // Update the result for this question in the corresponding round
-    if (resultsByRound[round]) {
-      const result = resultsByRound[round].find(
-        (r) => r.question === questionIndex
+    if (resultsByRound[roundNumber]) {
+      const result = resultsByRound[roundNumber].find(
+        (r: { question: number; answer: string; isCorrect: boolean }) =>
+          r.question === questionIndex
       );
       if (result) {
         result.answer = guess.value;
