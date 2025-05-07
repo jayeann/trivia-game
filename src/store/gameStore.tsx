@@ -14,10 +14,12 @@ type GameState = {
   loading: boolean;
   isLastQuestion: boolean;
   isLastRound: boolean;
+  isClueVisible: false;
 
   setCurrentRound: (currentRound: number) => void;
   setCurrentQuestionIndex: (currentQuestionIndex: number) => void;
   setPhase: (phase: GamePhase) => void;
+  setIsClueVisible: (isHintVisible: boolean) => void;
 
   incrementQuestionIndex: () => void;
   incrementRound: () => void;
@@ -34,6 +36,9 @@ export const useGameStore = create<GameState>((set, get) => ({
   loading: false,
   isLastQuestion: false,
   isLastRound: false,
+  isClueVisible: false,
+
+  setIsClueVisible: (isClueVisible) => set({ isClueVisible }),
 
   setPhase: (phase) => set({ phase }),
   setCurrentRound: (currentRound) => set({ currentRound }),
