@@ -49,18 +49,19 @@ function ResultScreen() {
     });
     return correctCount;
   };
-
   const totalCorrect = countCorrectAnswers();
+
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center h-full p-20">
       <h1 className="uppercase text-3xl lg:text-5xl xl:text-6xl text-white font-black double-shadow">
-        You got {totalCorrect} out of {answersPerRound.length}
+        You got {totalCorrect} out of {answerPerRound.length}
       </h1>
 
-      <div className="mt-20 flex flex-wrap gap-4 w-full h-20 min-h-[5rem] md:w-[400px] ">
-        {Object.keys(results).map((round) => (
-          <div>
-            Round {round}
+      <div className="mt-20 w-full min-h-[5rem] md:w-[400px]">
+        {Object.keys(results).map((round, index) => (
+          <div key={index} className="flex flex-wrap gap-4 ">
+            <div className="mt-10 text-2xl text-white">Round {round} </div>
+
             {results[round].map((item, idx) => (
               <div
                 key={idx}
