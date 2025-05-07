@@ -52,6 +52,7 @@ function RoundControls({ inputValue, inputIdentifier }: RoundControlsProps) {
       } else {
         setPhase("RESULTS");
       }
+      setIsClueVisible(false);
     } else {
       alert("Error retrieving rounds content.");
     }
