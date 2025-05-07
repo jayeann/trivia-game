@@ -18,8 +18,10 @@ const GameScreen = () => {
     (state) => state.currentQuestionIndex
   );
 
+  const isClueVisible = useGameStore((state) => state.isClueVisible);
+  const setIsClueVisible = useGameStore((state) => state.setIsClueVisible);
+
   const [inputValue, setInputValue] = useState<string>("");
-  const [isClueVisible, setIsClueVisible] = useState<boolean>(false);
 
   // Always define inputIdentifier, even if temporarily blank
   let inputIdentifier = "";
