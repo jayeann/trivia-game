@@ -1,15 +1,39 @@
-import React from "react";
-import musicBtn from "../assets/music-on-button.svg";
-import settingBtn from "../assets/setting-button.svg";
+import { useEffect } from "react";
+import musicOn from "../assets/music-on.svg";
+import musicOff from "../assets/music-off.svg";
+import hint from "../assets/hint.svg";
+import { useMediaStore } from "../store/mediaStore";
 
-function Footer() {
+type FooterProps = {
+  clue?: string;
+};
+function Footer({ clue }: FooterProps) {
+  const isBgPlaying = useMediaStore((state) => state.isBgPlaying);
+  const setIsBgPlaying = useMediaStore((state) => state.setIsBgPlaying);
+  const isPlaying = useMediaStore((state) => state.isPlaying);
+
+  useEffect(() => {
+    setIsBgPlaying(!isPlaying);
+  }, [isPlaying, setIsBgPlaying]);
+
+  const handleMusic = () => {
+    setIsBgPlaying(!isBgPlaying);
+  };
+
+  const source = isBgPlaying ? musicOn : musicOff;
   return (
     <>
-      <button className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
-        <img className="size-24" src={settingBtn} alt="settings button" />
-      </button>
-      <button className="fixed right-10 bottom-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
-        <img className="size-24" src={musicBtn} alt="music on button" />
+      {clue && (
+        <button className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
+          <img className="size-24" src={hint} alt="settings button" />
+        </button>
+      )}
+
+      <button
+        className="fixed right-10 bottom-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full "
+        onClick={handleMusic}
+      >
+        <img className="size-24" src={source} alt="music on button" />
       </button>
     </>
   );
