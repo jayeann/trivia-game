@@ -20,7 +20,7 @@ const CategorySelector = () => {
           <div
             key={index}
             onClick={() => setPhase("ROUND")}
-            className="text-2xl  flex items-center justify-center uppercase w-full h-15 bg-[#004357] rounded-2xl hover:border-2 hover:border-amber-300 text-white hover:text-amber-300 active:scale-105"
+            className="cursor-pointer text-2xl  flex items-center justify-center uppercase w-full h-15 bg-[#004357] rounded-2xl hover:border-2 hover:border-amber-300 text-white hover:text-amber-300 active:scale-105"
           >
             {item.category}
           </div>
