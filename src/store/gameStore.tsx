@@ -14,7 +14,7 @@ type GameState = {
   loading: boolean;
   isLastQuestion: boolean;
   isLastRound: boolean;
-  isClueVisible: false;
+  isClueVisible: boolean;
 
   setCurrentRound: (currentRound: number) => void;
   setCurrentQuestionIndex: (currentQuestionIndex: number) => void;

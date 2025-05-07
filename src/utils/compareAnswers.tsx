@@ -4,10 +4,10 @@ export const compareAnswers = (
   correctAnswers: CorrectAnswer[],
   guessAnswers: GuessAnswer[]
 ): {
-  [round: string]: { question: number; answer: string; isCorrect: boolean }[];
+  [round: number]: { question: number; answer: string; isCorrect: boolean }[];
 } => {
   const resultsByRound: {
-    [round: string]: { question: number; answer: string; isCorrect: boolean }[];
+    [round: number]: { question: number; answer: string; isCorrect: boolean }[];
   } = {};
 
   // Initialize results by round
