@@ -1,13 +1,9 @@
 import { useEffect } from "react";
 import musicOn from "../assets/music-on.svg";
 import musicOff from "../assets/music-off.svg";
-import hint from "../assets/hint.svg";
 import { useMediaStore } from "../store/mediaStore";
 
-type FooterProps = {
-  clue?: string;
-};
-function Footer({ clue }: FooterProps) {
+function Footer() {
   const isBgPlaying = useMediaStore((state) => state.isBgPlaying);
   const setIsBgPlaying = useMediaStore((state) => state.setIsBgPlaying);
   const isPlaying = useMediaStore((state) => state.isPlaying);
@@ -23,12 +19,6 @@ function Footer({ clue }: FooterProps) {
   const source = isBgPlaying ? musicOn : musicOff;
   return (
     <>
-      {clue && (
-        <button className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full ">
-          <img className="size-24" src={hint} alt="settings button" />
-        </button>
-      )}
-
       <button
         className="fixed right-10 bottom-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full "
         onClick={handleMusic}

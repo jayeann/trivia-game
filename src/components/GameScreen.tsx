@@ -8,6 +8,7 @@ import { DotLoader } from "./Loader";
 import { getFromLocalStorage } from "../utils/localStorage";
 import Footer from "./Footer";
 import ChatBubble from "./ChatBubble";
+import hint from "../assets/hint.svg";
 
 const GameScreen = () => {
   const { data: rounds, isLoading, error } = useRounds();
@@ -18,6 +19,7 @@ const GameScreen = () => {
   );
 
   const [inputValue, setInputValue] = useState<string>("");
+  const [isClueVisible, setIsClueVisible] = useState<boolean>(false);
 
   // Always define inputIdentifier, even if temporarily blank
   let inputIdentifier = "";
@@ -40,6 +42,10 @@ const GameScreen = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+  };
+
+  const handleClueVisible = () => {
+    setIsClueVisible(!isClueVisible);
   };
 
   // ✅ Now safe to return early
@@ -90,8 +96,15 @@ const GameScreen = () => {
         />
       </div>
 
-      <ChatBubble message={question.hint} />
-      <Footer clue={question.hint} />
+      {isClueVisible && <ChatBubble message={question.hint} />}
+
+      <button
+        className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full "
+        onClick={handleClueVisible}
+      >
+        <img className="size-24" src={hint} alt="settings button" />
+      </button>
+      <Footer />
     </div>
   );
 };

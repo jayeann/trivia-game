@@ -6,7 +6,7 @@ const ChatBubble = ({ message }: ChatBubbleProps) => {
   if (!message) return null;
   return (
     <div
-      className={`fixed break-words rounded-3xl left-20 bottom-40 bg-white text-3xl`}
+      className={`fixed break-words rounded-3xl left-20 bottom-40 bg-white text-3xl transition transform duration-200 ease-out scale-100 opacity-100`}
     >
       <div className={`relative p-8 max-w-xs rounded-lg rounded-bl-none`}>
         {message ? message : "No hint avaible"}
