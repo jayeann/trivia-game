@@ -1,15 +1,14 @@
 import triviaLogo from "/trivia.svg";
 import playBtn from "../assets/play-button.svg";
 import { useGameStore } from "../store/gameStore";
+import Footer from "./Footer";
 
 const Home = () => {
   const setPhase = useGameStore((state) => state.setPhase);
   return (
     <>
       <div className="flex items-center justify-center">
-        <a href="#" target="_blank">
-          <img className="size-96" src={triviaLogo} alt="trivia logo" />
-        </a>
+        <img className="size-96" src={triviaLogo} alt="trivia logo" />
       </div>
       <h1 className="uppercase text-6xl lg:text-7xl xl:text-8xl text-white font-black double-shadow">
         Name that
@@ -21,6 +20,7 @@ const Home = () => {
       >
         <img className="size-40" src={playBtn} alt="play button" />
       </button>
+      <Footer />
     </>
   );
 };
