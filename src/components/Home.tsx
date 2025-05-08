@@ -18,7 +18,7 @@ const Home = () => {
         onClick={() => setPhase("CATEGORY")}
         className="fixed bottom-50 left-1/2 transform -translate-x-1/2 transition duration-300 hover:scale-120 active:scale-95 rounded-full "
       >
-        <img className="size-40" src={playBtn} alt="play button" />
+        <img className="w-24 md:w-32 lg:w-36" src={playBtn} alt="play button" />
       </button>
       <Footer />
     </>
