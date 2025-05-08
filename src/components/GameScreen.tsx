@@ -101,7 +101,11 @@ const GameScreen = () => {
         className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full "
         onClick={handleClueVisible}
       >
-        <img className="size-24" src={hint} alt="settings button" />
+        <img
+          className="w-16 md:w-20 lg:w-24"
+          src={hint}
+          alt="settings button"
+        />
       </button>
       <Footer />
     </div>

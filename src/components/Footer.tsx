@@ -23,7 +23,11 @@ function Footer() {
         className="fixed right-10 bottom-10 transform  transition duration-300 hover:scale-110 active:scale-95 rounded-full "
         onClick={handleMusic}
       >
-        <img className="size-24" src={source} alt="music on button" />
+        <img
+          className="w-16 md:w-20 lg:w-24"
+          src={source}
+          alt="music on button"
+        />
       </button>
     </>
   );
