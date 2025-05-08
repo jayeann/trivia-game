@@ -1,63 +1,44 @@
-import { useEffect } from "react";
-import "./App.css";
+import { Suspense, lazy, useEffect } from "react";
 import { useGameStore } from "./store/gameStore";
-import { useMediaStore } from "./store/mediaStore";
-import Home from "./components/Home";
-import CategorySelector from "./components/CategorySelector";
-import GameScreen from "./components/GameScreen";
-import ResultScreen from "./components/ResultScreen";
-import { Audio } from "./components/MediaPlayer";
 import { clearAllLocalStorage } from "./utils/localStorage";
+import { DotLoader } from "./components/Loader";
+import BgMusicControl from "./components/BgMusicControl";
+import "./App.css";
+
+const Home = lazy(() => import("./components/Home"));
+const CategorySelector = lazy(() => import("./components/CategorySelector"));
+const GameScreen = lazy(() => import("./components/GameScreen"));
+const ResultScreen = lazy(() => import("./components/ResultScreen"));
 
 function App() {
   const phase = useGameStore((state) => state.phase);
-  const setIsBgPlaying = useMediaStore((state) => state.setIsBgPlaying);
-  const isBgPlaying = useMediaStore((state) => state.isBgPlaying);
 
+  // Ensures any temporary data is cleared before the user leaves or refreshes the page.
   useEffect(() => {
-    const handleBeforeUnload = () => {
-      clearAllLocalStorage();
-    };
-
+    const handleBeforeUnload = () => clearAllLocalStorage();
     window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, []);
 
-  useEffect(() => {
-    // Ensure background music plays on mount
-    setIsBgPlaying(true);
-  }, [setIsBgPlaying]);
-
-  let content;
-  switch (phase) {
-    case "HOME":
-      content = <Home />;
-      break;
-    case "CATEGORY":
-      content = <CategorySelector />;
-      break;
-    case "ROUND":
-      content = <GameScreen />;
-      break;
-    case "RESULTS":
-      content = <ResultScreen />;
-      break;
-    default:
-      content = null;
-  }
+  const renderPhase = () => {
+    switch (phase) {
+      case "HOME":
+        return <Home />;
+      case "CATEGORY":
+        return <CategorySelector />;
+      case "ROUND":
+        return <GameScreen />;
+      case "RESULTS":
+        return <ResultScreen />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
-      <Audio
-        onEnded={() => {}}
-        volume={0.15}
-        playing={isBgPlaying}
-        url="https://raw.githubusercontent.com/jayeann/media-player-test/refs/heads/main/song/bg.mp3"
-      />
-      {content}
+      <BgMusicControl />
+      <Suspense fallback={<DotLoader />}>{renderPhase()}</Suspense>
     </>
   );
 }
