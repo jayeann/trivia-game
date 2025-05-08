@@ -1,7 +1,6 @@
 import triviaLogo from "/trivia.svg";
 import playBtn from "../assets/play-button.svg";
 import { useGameStore } from "../store/gameStore";
-import Footer from "./Footer";
 
 const Home = () => {
   const setPhase = useGameStore((state) => state.setPhase);
@@ -20,7 +19,6 @@ const Home = () => {
       >
         <img className="w-24 md:w-32 lg:w-36" src={playBtn} alt="play button" />
       </button>
-      <Footer />
     </>
   );
 };
