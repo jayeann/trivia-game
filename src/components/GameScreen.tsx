@@ -6,9 +6,7 @@ import { useGameStore } from "../store/gameStore";
 import RoundControls from "./RoundControls";
 import { DotLoader } from "./Loader";
 import { getFromLocalStorage } from "../utils/localStorage";
-import Footer from "./Footer";
-import ChatBubble from "./ChatBubble";
-import hint from "../assets/hint.svg";
+import HintControl from "./HintControl";
 
 const GameScreen = () => {
   const { data: rounds, isLoading, error } = useRounds();
@@ -17,9 +15,6 @@ const GameScreen = () => {
   const currentQuestionIndex = useGameStore(
     (state) => state.currentQuestionIndex
   );
-
-  const isClueVisible = useGameStore((state) => state.isClueVisible);
-  const setIsClueVisible = useGameStore((state) => state.setIsClueVisible);
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -41,10 +36,6 @@ const GameScreen = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
-
-  const handleClueVisible = () => {
-    setIsClueVisible(!isClueVisible);
   };
 
   // ✅ Now safe to return early
@@ -94,20 +85,7 @@ const GameScreen = () => {
           className="w-full h-20 text-3xl uppercase p-4 border rounded-3xl text-center bg-white"
         />
       </div>
-
-      {isClueVisible && <ChatBubble message={question.hint} />}
-
-      <button
-        className="fixed left-10 bottom-10 transform transition duration-300 hover:scale-110 active:scale-95 rounded-full "
-        onClick={handleClueVisible}
-      >
-        <img
-          className="w-16 md:w-20 lg:w-24"
-          src={hint}
-          alt="settings button"
-        />
-      </button>
-      <Footer />
+      <HintControl hint={question?.hint || ""} />
     </div>
   );
 };
