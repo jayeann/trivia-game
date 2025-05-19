@@ -3,6 +3,7 @@ import { useGameStore } from "./store/gameStore";
 import { clearAllLocalStorage } from "./utils/localStorage";
 import { DotLoader } from "./components/Loader";
 import BgMusicControl from "./components/BgMusicControl";
+import { useAudioStore } from "./store/audioStore";
 import "./App.css";
 
 const Home = lazy(() => import("./components/Home"));
@@ -12,6 +13,7 @@ const ResultScreen = lazy(() => import("./components/ResultScreen"));
 
 function App() {
   const phase = useGameStore((state) => state.phase);
+  const { playBgAudio } = useAudioStore();
 
   // Ensures any temporary data is cleared before the user leaves or refreshes the page.
   useEffect(() => {
@@ -19,6 +21,10 @@ function App() {
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, []);
+
+  useEffect(() => {
+    playBgAudio();
+  }, [playBgAudio]);
 
   const renderPhase = () => {
     switch (phase) {
