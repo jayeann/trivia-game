@@ -1,0 +1,1 @@
+export const VOLUME_LEVEL = 0.15
